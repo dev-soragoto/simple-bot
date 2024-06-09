@@ -1,0 +1,32 @@
+networks:
+  bot-network:
+    driver: bridge
+    ipam:
+      config:
+        - subnet: "172.20.0.0/24"
+          gateway: "172.20.0.1"
+services:
+  napcat:
+      env_file:
+        - /opt/bot-data/.env.napcat
+      ports:
+        - 127.0.0.1:3001:3001
+      container_name: napcat
+      restart: always
+      image: mlikiowa/napcat-docker:latest
+      volumes:
+        - /opt/bot-data/qq:/root/.config/QQ
+        - /opt/bot-data/config:/usr/src/app/napcat/config
+      networks:
+        - bot-network
+        
+  nonebot:
+    build: .
+    volumes:
+      - /opt/bot-data/.env.prod:/app/.env.prod
+      - /opt/bot-data/id_rsa:/app/id_rsa
+    environment:
+      ENVIRONMENT: prod
+    networks:
+      - bot-network
+    restart: always
