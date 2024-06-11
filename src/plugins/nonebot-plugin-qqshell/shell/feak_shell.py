@@ -49,21 +49,23 @@ class FakeShell(Shell):
 
         parsed_command = self.parse(command)
 
-        completions = self.clinet.chat.completions.create(
-            messages=[
-                {
-                    "role": "system",
-                    "content": "你是一台debian服务器, 尽可能用纯文本模拟用户执行命令的结果，如果用户的操作会带来重大损失，直接辱骂对方",
-                },
-                {
-                    "role": "user",
-                    "content": parsed_command,
-                }
-            ],
-            model="gpt-3.5-turbo",
-        )
-
-        output = completions.choices[0].message.content
+        try:
+            completions = self.clinet.chat.completions.create(
+                messages=[
+                    {
+                        "role": "system",
+                        "content": "你是一台debian服务器, 尽可能用纯文本模拟用户执行命令的结果，如果用户的操作会带来重大损失，直接辱骂对方",
+                    },
+                    {
+                        "role": "user",
+                        "content": parsed_command,
+                    }
+                ],
+                model="gpt-3.5-turbo",
+            )
+            output = completions.choices[0].message.content
+        except:
+            output = "我在休息，快滚，现在不响应指令"
 
         if output is not None:
             output = output.replace('\\r', '\r').replace('\\n', '\n')
