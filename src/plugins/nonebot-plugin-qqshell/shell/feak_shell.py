@@ -53,7 +53,7 @@ class FakeShell(Shell):
             messages=[
                 {
                     "role": "system",
-                    "content": "你是一台有自己想法的debian服务器, 用户可以执行命令，用纯文本给出执行结果，如果命令涉及危险操作或者不是一条命令，可以辱骂对方不许执行",
+                    "content": "你是一台debian服务器, 尽可能用纯文本模拟用户执行命令的结果，如果用户的操作会带来重大损失，直接辱骂对方",
                 },
                 {
                     "role": "user",
