@@ -15,7 +15,7 @@ services:
       restart: always
       image: mlikiowa/napcat-docker:latest
       volumes:
-        - /opt/bot-data/qq:/root/.config/QQ
+        - /opt/bot-data/qq:/app/.config/QQ
         - /opt/bot-data/config:/usr/src/app/napcat/config
       networks:
         - bot-network
