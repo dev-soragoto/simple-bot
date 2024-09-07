@@ -14,9 +14,10 @@ services:
       container_name: napcat
       restart: always
       image: mlikiowa/napcat-docker:latest
-      volumes:
-        - /opt/bot-data/qq:/app/.config/QQ
-        - /opt/bot-data/config:/app/napcat/config
+      # 挂载了第一次必起不来 你有什么头猪吗
+      # volumes:
+      #   - /opt/bot-data/qq:/app/.config/QQ
+      #   - /opt/bot-data/config:/app/napcat/config
       networks:
         - bot-network
         
