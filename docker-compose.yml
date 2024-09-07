@@ -16,7 +16,7 @@ services:
       image: mlikiowa/napcat-docker:latest
       volumes:
         - /opt/bot-data/qq:/app/.config/QQ
-        - /opt/bot-data/config:/usr/src/app/napcat/config
+        - /opt/bot-data/config:/app/napcat/config
       networks:
         - bot-network
         
