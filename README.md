@@ -1,12 +1,14 @@
 # simple-bot
 
-## How to start
+## what's this
+My personal bot and the QQ integrated backend
 
-1. generate project using `nb create` .
-2. create your plugin using `nb plugin create` .
-3. writing your plugins under `src/plugins` folder.
-4. run your bot using `nb run --reload` .
+## How to use
+```bash
+docker compose build
+docker compose up -d
+```
+Other references to `docker-compose.yaml`
 
-## Documentation
-
-See [Docs](https://nonebot.dev/)
+## tips
+Some of the code references https://github.com/yejue/nonebot-plugin-qqshell
