@@ -1,4 +1,4 @@
-FROM python as requirements_stage
+FROM python:3.12 as requirements_stage
 
 WORKDIR /wheel
 
@@ -14,7 +14,7 @@ RUN python -m pip wheel --wheel-dir=/wheel --no-cache-dir --requirement ./requir
 RUN python -m pipx run --no-cache nb-cli generate -f /tmp/bot.py
 
 
-FROM python:slim
+FROM python:3.12-slim
 
 WORKDIR /app
 
